@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Placeholder palette — final hex codes will land from brand assets.
+     Matte dark sections, restrained accent, technical feel. */
+  --color-bg: 10 11 13;
+  --color-surface: 17 19 22;
+  --color-surface-alt: 24 27 31;
+  --color-text: 240 241 243;
+  --color-text-muted: 156 163 173;
+  --color-accent: 255 122 51;
+  --color-accent-muted: 255 178 122;
+  --color-border: 38 42 48;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-bg text-text font-sans;
+  }
+
+  ::selection {
+    @apply bg-accent/80 text-bg;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-bg;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

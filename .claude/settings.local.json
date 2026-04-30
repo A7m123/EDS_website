@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pnpm -v)",
+      "Bash(corepack --version)",
+      "Bash(corepack prepare *)",
+      "Bash(corepack pnpm *)",
+      "Read(//private/tmp/**)",
+      "Bash(rm -rf eds-scaffold)"
+    ]
+  }
+}

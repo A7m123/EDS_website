@@ -5,7 +5,7 @@
 export function HeroMedia() {
   return (
     <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(60%_50%_at_50%_0%,rgba(255,122,51,0.18),transparent_70%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(60%_50%_at_50%_0%,rgba(37,99,235,0.22),transparent_70%)]" />
       <div
         className="absolute inset-0 opacity-[0.06]"
         style={{

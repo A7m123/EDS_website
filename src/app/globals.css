@@ -10,8 +10,8 @@
   --color-surface-alt: 24 27 31;
   --color-text: 240 241 243;
   --color-text-muted: 156 163 173;
-  --color-accent: 255 122 51;
-  --color-accent-muted: 255 178 122;
+  --color-accent: 37 99 235;
+  --color-accent-muted: 96 165 250;
   --color-border: 38 42 48;
 }
 
@@ -26,7 +26,7 @@
   }
 
   ::selection {
-    @apply bg-accent/80 text-bg;
+    @apply bg-accent/80 text-white;
   }
 
   :focus-visible {

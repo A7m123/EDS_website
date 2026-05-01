@@ -13,7 +13,7 @@ const base =
   "disabled:opacity-50 disabled:pointer-events-none whitespace-nowrap";
 
 const variantClass: Record<Variant, string> = {
-  primary: "bg-accent text-bg hover:bg-accent-muted",
+  primary: "bg-accent text-white hover:bg-accent-muted hover:text-bg",
   secondary: "bg-surface text-text border border-border hover:bg-surface-alt",
   ghost: "bg-transparent text-text hover:bg-surface",
 };

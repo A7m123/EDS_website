@@ -34,7 +34,7 @@ export async function GET(req: NextRequest) {
             color: "#9ca3ad",
           }}
         >
-          <span style={{ width: 32, height: 2, background: "#ff7a33" }} />
+          <span style={{ width: 32, height: 2, background: "#2563eb" }} />
           <span>{eyebrow}</span>
         </div>
 

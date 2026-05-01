@@ -37,7 +37,7 @@ export function CtaBand({ title, primary, secondary }: Props) {
         <div className="relative overflow-hidden rounded-2xl border border-border bg-surface p-10 md:p-16">
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-0 bg-[radial-gradient(50%_60%_at_85%_0%,rgba(255,122,51,0.18),transparent_70%)]"
+            className="pointer-events-none absolute inset-0 bg-[radial-gradient(50%_60%_at_85%_0%,rgba(37,99,235,0.22),transparent_70%)]"
           />
           <div className="relative grid gap-8 md:grid-cols-[1.5fr_1fr] md:items-center">
             <Heading as={2} size="lg">

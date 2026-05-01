@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Inter, JetBrains_Mono } from "next/font/google";
+import { VisualEditing } from "next-sanity";
 import "./globals.css";
 import { SkipLink } from "@/components/ui/SkipLink";
 import { Nav } from "@/components/sections/Nav";
@@ -45,6 +46,7 @@ export default function RootLayout({
         </main>
         <Footer />
         <OrganizationJsonLd />
+        <VisualEditing />
       </body>
     </html>
   );

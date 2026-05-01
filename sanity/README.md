@@ -1,6 +1,6 @@
 # EDS Sanity Studio
 
-Standalone Sanity Studio for the Energy Driven Solutions site. Deployed
+Standalone Sanity Studio for the Energy Driven Systems site. Deployed
 separately from the Next.js app.
 
 ## Local

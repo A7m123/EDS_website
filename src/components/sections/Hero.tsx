@@ -24,7 +24,7 @@ const defaults = {
   headline1: "Hard problems,",
   headline2: "engineered into reality.",
   subhead:
-    "Energy Driven Solutions is a Dubai-based R&D house building electromechanical, marine, and software systems for defense, energy, and government clients across the region.",
+    "Energy Driven Systems is a Dubai-based R&D house building electromechanical, marine, and software systems for defense, energy, and government clients across the region.",
   ctaPrimary: { label: "Explore capabilities", href: "/capabilities" },
   ctaSecondary: { label: "See our work", href: "/projects" },
 };

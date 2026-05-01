@@ -1,6 +1,6 @@
 # EDS Web
 
-Marketing & capabilities site for Energy Driven Solutions (EDS), a UAE-based
+Marketing & capabilities site for Energy Driven Systems (EDS), a UAE-based
 engineering and technology R&D company.
 
 ## Stack

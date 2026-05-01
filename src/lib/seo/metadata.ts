@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://energydriven.me";
 
-export const siteName = "Energy Driven Solutions";
+export const siteName = "Energy Driven Systems";
 
 const defaultDescription =
   "Engineering and technology R&D for defense, energy, marine, and government — based in Dubai.";

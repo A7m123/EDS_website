@@ -11,7 +11,7 @@ export const revalidate = 60;
 export const metadata = pageMetadata({
   title: "Contact",
   description:
-    "Get in touch with Energy Driven Solutions. Engineering R&D, electromechanical and marine systems, software, integration.",
+    "Get in touch with Energy Driven Systems. Engineering R&D, electromechanical and marine systems, software, integration.",
   path: "/contact",
 });
 

@@ -15,7 +15,7 @@ const previewUrl =
 
 export default defineConfig({
   name: "eds-studio",
-  title: "Energy Driven Solutions",
+  title: "Energy Driven Systems",
   projectId,
   dataset,
   plugins: [

@@ -12,7 +12,7 @@ export const revalidate = 60;
 export const metadata = pageMetadata({
   title: "Capabilities",
   description:
-    "What Energy Driven Solutions does — R&D, electromechanical systems, marine systems, software & embedded, power & energy, integration & delivery.",
+    "What Energy Driven Systems does — R&D, electromechanical systems, marine systems, software & embedded, power & energy, integration & delivery.",
   path: "/capabilities",
 });
 

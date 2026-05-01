@@ -14,7 +14,7 @@ export const revalidate = 60;
 export const metadata = pageMetadata({
   title: "About",
   description:
-    "Energy Driven Solutions is a Dubai-based engineering R&D company building advanced systems for defense, energy, marine, and government clients.",
+    "Energy Driven Systems is a Dubai-based engineering R&D company building advanced systems for defense, energy, marine, and government clients.",
   path: "/about",
 });
 
@@ -22,7 +22,7 @@ const fallback = {
   heroEyebrow: "About",
   heroHeadline: "A small engineering team with a wide remit.",
   heroIntro:
-    "Energy Driven Solutions (EDS) is an engineering and technology R&D company based in Dubai. We design, build, and field-test electromechanical, marine, and software systems for defense, energy, and government clients across the region.",
+    "Energy Driven Systems (EDS) is an engineering and technology R&D company based in Dubai. We design, build, and field-test electromechanical, marine, and software systems for defense, energy, and government clients across the region.",
   whereEyebrow: "Where we work",
   whereTitle: "Built in Dubai. Deployed across the region.",
   whereBodyText: [

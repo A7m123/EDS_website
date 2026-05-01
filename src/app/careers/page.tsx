@@ -11,7 +11,7 @@ export const revalidate = 60;
 export const metadata = pageMetadata({
   title: "Careers",
   description:
-    "Join Energy Driven Solutions. We hire mechanical, electrical, embedded, and systems engineers to build hardware that ships.",
+    "Join Energy Driven Systems. We hire mechanical, electrical, embedded, and systems engineers to build hardware that ships.",
   path: "/careers",
 });
 

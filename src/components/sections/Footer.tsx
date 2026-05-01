@@ -29,9 +29,9 @@ export function Footer() {
           <Link
             href="/"
             className="font-display text-2xl tracking-tight"
-            aria-label="Energy Driven Solutions"
+            aria-label="Energy Driven Systems"
           >
-            Energy Driven Solutions
+            Energy Driven Systems
           </Link>
           <p className="mt-4 max-w-prose text-sm text-text-muted">
             Engineering and technology R&amp;D for defense, energy, marine, and
@@ -60,7 +60,7 @@ export function Footer() {
       </Container>
       <div className="border-t border-border">
         <Container className="flex flex-col items-start gap-2 py-6 text-xs text-text-muted md:flex-row md:items-center md:justify-between">
-          <p>© {year} Energy Driven Solutions. All rights reserved.</p>
+          <p>© {year} Energy Driven Systems. All rights reserved.</p>
           <p className="font-mono">Dubai, United Arab Emirates</p>
         </Container>
       </div>

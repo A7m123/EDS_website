@@ -16,7 +16,7 @@ export function Nav() {
         <Link
           href="/"
           className="font-display text-lg tracking-tight md:text-xl"
-          aria-label="Energy Driven Solutions — Home"
+          aria-label="Energy Driven Systems — Home"
         >
           EDS
         </Link>

@@ -16,7 +16,7 @@ import { pageMetadata } from "@/lib/seo/metadata";
 export const revalidate = 60;
 
 export const metadata = pageMetadata({
-  title: "Energy Driven Solutions",
+  title: "Energy Driven Systems",
   description:
     "Engineering and technology R&D for defense, energy, marine, and government — based in Dubai.",
   path: "/",

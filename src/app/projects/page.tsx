@@ -14,7 +14,7 @@ export const revalidate = 60;
 export const metadata = pageMetadata({
   title: "Projects",
   description:
-    "Selected engineering projects from Energy Driven Solutions across defense, energy, marine, and government.",
+    "Selected engineering projects from Energy Driven Systems across defense, energy, marine, and government.",
   path: "/projects",
 });
 

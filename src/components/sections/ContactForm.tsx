@@ -7,12 +7,14 @@ import { cn } from "@/lib/cn";
 type Status = "idle" | "submitting" | "ok" | "error";
 type Errors = Partial<Record<"name" | "email" | "message", string>>;
 
+type Props = { recipient?: string };
+
 const labelClass = "block font-mono text-eyebrow uppercase text-text-muted";
 const inputClass =
   "mt-2 block w-full rounded-md border border-border bg-surface px-4 py-3 text-text " +
   "placeholder:text-text-muted/60 focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/40";
 
-export function ContactForm() {
+export function ContactForm({ recipient = "hello@energydriven.me" }: Props) {
   const [status, setStatus] = useState<Status>("idle");
   const [errors, setErrors] = useState<Errors>({});
   const formId = useId();
@@ -46,7 +48,7 @@ export function ContactForm() {
     const body = encodeURIComponent(
       `${data.get("message")}\n\n— ${data.get("name")} <${data.get("email")}>`,
     );
-    window.location.href = `mailto:hello@energydriven.me?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
     setStatus("ok");
   }
 

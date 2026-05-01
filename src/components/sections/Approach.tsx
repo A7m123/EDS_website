@@ -7,48 +7,58 @@ import { Section } from "@/components/ui/Section";
 import { Heading } from "@/components/ui/Heading";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { prefersReducedMotion } from "@/lib/motion/reduced-motion";
+import type { ApproachStep } from "@/lib/sanity/types";
 
-const steps = [
+const defaultSteps: ApproachStep[] = [
   {
-    n: "01",
+    number: "01",
     title: "Scope & feasibility",
     body: "We start in the constraint space — mission, environment, integration, budget. Out comes a feasibility brief and a path to prototype.",
   },
   {
-    n: "02",
+    number: "02",
     title: "Design & prototype",
     body: "Concurrent mechanical, electrical, and software design. Hardware-in-the-loop from week one. Iterations are short.",
   },
   {
-    n: "03",
+    number: "03",
     title: "Build & integrate",
     body: "In-house fabrication and assembly. Bench tests, environmental tests, then full system integration with the operator's stack.",
   },
   {
-    n: "04",
+    number: "04",
     title: "Field & handover",
     body: "Field trials with the customer's team. Documentation, training, and a sustainment plan for the long tail.",
   },
 ];
 
-export function Approach() {
+type Props = {
+  eyebrow?: string;
+  title?: string;
+  steps?: ApproachStep[];
+};
+
+export function Approach({ eyebrow, title, steps }: Props) {
   const wrapRef = useRef<HTMLDivElement | null>(null);
+  const e = eyebrow || "Approach";
+  const t = title || "How a project becomes a delivered system.";
+  const items = steps && steps.length > 0 ? steps : defaultSteps;
 
   useEffect(() => {
     const wrap = wrapRef.current;
     if (!wrap) return;
-    const items = wrap.querySelectorAll<HTMLLIElement>("[data-step]");
-    if (items.length === 0) return;
+    const els = wrap.querySelectorAll<HTMLLIElement>("[data-step]");
+    if (els.length === 0) return;
 
     if (prefersReducedMotion()) {
-      items.forEach((el) => {
+      els.forEach((el) => {
         el.style.opacity = "1";
         el.style.transform = "none";
       });
       return;
     }
 
-    items.forEach((el) => {
+    els.forEach((el) => {
       el.style.opacity = "0";
       el.style.transform = "translateY(16px)";
     });
@@ -58,7 +68,7 @@ export function Approach() {
         for (const entry of entries) {
           if (!entry.isIntersecting) continue;
           anime({
-            targets: items,
+            targets: els,
             opacity: [0, 1],
             translateY: [16, 0],
             duration: 500,
@@ -80,22 +90,22 @@ export function Approach() {
     <Section tone="default" size="md">
       <Container>
         <div className="max-w-2xl">
-          <Eyebrow>Approach</Eyebrow>
+          <Eyebrow>{e}</Eyebrow>
           <Heading as={2} size="lg" className="mt-6">
-            How a project becomes a delivered system.
+            {t}
           </Heading>
         </div>
 
         <div ref={wrapRef} className="mt-16">
           <ol className="grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-border bg-border md:grid-cols-2 lg:grid-cols-4">
-            {steps.map((s) => (
+            {items.map((s, i) => (
               <li
-                key={s.n}
+                key={`${s.number ?? i}-${s.title ?? ""}`}
                 data-step
                 className="bg-bg p-8 transition-colors hover:bg-surface"
               >
                 <span className="font-mono text-eyebrow uppercase text-accent">
-                  Step {s.n}
+                  Step {s.number ?? String(i + 1).padStart(2, "0")}
                 </span>
                 <h3 className="mt-6 font-display text-xl tracking-tight">
                   {s.title}

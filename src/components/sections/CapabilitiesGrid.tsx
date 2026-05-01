@@ -57,17 +57,25 @@ const defaults: Item[] = [
 
 type Props = {
   items?: Item[];
+  eyebrow?: string;
+  title?: string;
 };
 
-export function CapabilitiesGrid({ items = defaults }: Props) {
+export function CapabilitiesGrid({
+  items = defaults,
+  eyebrow,
+  title,
+}: Props) {
+  const e = eyebrow || "Capabilities";
+  const t = title || "Multidisciplinary engineering, delivered as one team.";
   return (
     <Section tone="default" size="md">
       <Container>
         <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
           <div className="max-w-2xl">
-            <Eyebrow>Capabilities</Eyebrow>
+            <Eyebrow>{e}</Eyebrow>
             <Heading as={2} size="lg" className="mt-6">
-              Multidisciplinary engineering, delivered as one team.
+              {t}
             </Heading>
           </div>
           <Link

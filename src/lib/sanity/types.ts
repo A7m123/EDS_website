@@ -6,6 +6,11 @@ export type SanityImage = {
   alt?: string;
 };
 
+export type Cta = {
+  label?: string;
+  href?: string;
+};
+
 export type Project = {
   _id: string;
   title: string;
@@ -56,4 +61,69 @@ export type SiteSettings = {
   contactPhone?: string;
   address?: string;
   social?: { platform: string; url: string }[];
+};
+
+export type ApproachStep = {
+  number?: string;
+  title?: string;
+  body?: string;
+};
+
+export type StatItem = {
+  value?: number;
+  suffix?: string;
+  label?: string;
+};
+
+export type HomePage = {
+  heroEyebrow?: string;
+  heroHeadline1?: string;
+  heroHeadline2?: string;
+  heroSubhead?: string;
+  heroCtaPrimary?: Cta;
+  heroCtaSecondary?: Cta;
+  capabilitiesEyebrow?: string;
+  capabilitiesTitle?: string;
+  featuredEyebrow?: string;
+  featuredTitle?: string;
+  approachEyebrow?: string;
+  approachTitle?: string;
+  approachSteps?: ApproachStep[];
+  stats?: StatItem[];
+  ctaTitle?: string;
+  ctaPrimary?: Cta;
+  ctaSecondary?: Cta;
+};
+
+export type AboutPage = {
+  heroEyebrow?: string;
+  heroHeadline?: string;
+  heroIntro?: string;
+  whereEyebrow?: string;
+  whereTitle?: string;
+  whereBody?: PortableTextBlock[];
+  leadershipEyebrow?: string;
+  leadershipTitle?: string;
+};
+
+export type CareersPage = {
+  heroEyebrow?: string;
+  heroHeadline?: string;
+  heroIntro?: string;
+  disciplinesEyebrow?: string;
+  disciplinesTitle?: string;
+  disciplines?: string[];
+  ctaTitle?: string;
+  ctaBody?: string;
+  ctaEmail?: string;
+  ctaLabel?: string;
+};
+
+export type ContactPage = {
+  heroEyebrow?: string;
+  heroHeadline?: string;
+  heroIntro?: string;
+  officeAddress?: string;
+  officeEmail?: string;
+  officeHours?: string;
 };

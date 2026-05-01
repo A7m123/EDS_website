@@ -2,8 +2,35 @@ import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { Heading } from "@/components/ui/Heading";
 import { Button } from "@/components/ui/Button";
+import type { Cta } from "@/lib/sanity/types";
 
-export function CtaBand() {
+type Props = {
+  title?: string;
+  primary?: Cta;
+  secondary?: Cta;
+};
+
+const defaults = {
+  title: "Have a hard problem? Let's talk.",
+  primary: { label: "Work with us", href: "/contact" },
+  secondary: {
+    label: "hello@energydriven.me",
+    href: "mailto:hello@energydriven.me",
+  },
+};
+
+export function CtaBand({ title, primary, secondary }: Props) {
+  const t = title || defaults.title;
+  const p = {
+    label: primary?.label || defaults.primary.label,
+    href: primary?.href || defaults.primary.href,
+  };
+  const s = {
+    label: secondary?.label || defaults.secondary.label,
+    href: secondary?.href || defaults.secondary.href,
+  };
+  const secondaryExternal = s.href.startsWith("mailto:") || s.href.startsWith("http");
+
   return (
     <Section tone="default" size="md">
       <Container>
@@ -14,19 +41,19 @@ export function CtaBand() {
           />
           <div className="relative grid gap-8 md:grid-cols-[1.5fr_1fr] md:items-center">
             <Heading as={2} size="lg">
-              Have a hard problem? Let&apos;s talk.
+              {t}
             </Heading>
             <div className="flex flex-wrap gap-3 md:justify-end">
-              <Button href="/contact" size="lg" withArrow>
-                Work with us
+              <Button href={p.href} size="lg" withArrow>
+                {p.label}
               </Button>
               <Button
-                href="mailto:hello@energydriven.me"
+                href={s.href}
                 size="lg"
                 variant="secondary"
-                external
+                external={secondaryExternal}
               >
-                hello@energydriven.me
+                {s.label}
               </Button>
             </div>
           </div>

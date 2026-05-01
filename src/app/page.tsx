@@ -8,6 +8,7 @@ import { CtaBand } from "@/components/sections/CtaBand";
 import {
   getClientLogos,
   getFeaturedProjects,
+  getHomePage,
   getRecentProjects,
 } from "@/lib/sanity/queries";
 import { pageMetadata } from "@/lib/seo/metadata";
@@ -22,7 +23,8 @@ export const metadata = pageMetadata({
 });
 
 export default async function HomePage() {
-  const [logos, featured, recent] = await Promise.all([
+  const [home, logos, featured, recent] = await Promise.all([
+    getHomePage(),
     getClientLogos(),
     getFeaturedProjects(),
     getRecentProjects(),
@@ -33,13 +35,35 @@ export default async function HomePage() {
 
   return (
     <>
-      <Hero />
+      <Hero
+        eyebrow={home?.heroEyebrow}
+        headline1={home?.heroHeadline1}
+        headline2={home?.heroHeadline2}
+        subhead={home?.heroSubhead}
+        ctaPrimary={home?.heroCtaPrimary}
+        ctaSecondary={home?.heroCtaSecondary}
+      />
       <ClientLogos logos={logos} />
-      <CapabilitiesGrid />
-      <FeaturedProjects projects={projects} />
-      <Approach />
-      <Stats />
-      <CtaBand />
+      <CapabilitiesGrid
+        eyebrow={home?.capabilitiesEyebrow}
+        title={home?.capabilitiesTitle}
+      />
+      <FeaturedProjects
+        projects={projects}
+        eyebrow={home?.featuredEyebrow}
+        title={home?.featuredTitle}
+      />
+      <Approach
+        eyebrow={home?.approachEyebrow}
+        title={home?.approachTitle}
+        steps={home?.approachSteps}
+      />
+      <Stats stats={home?.stats} />
+      <CtaBand
+        title={home?.ctaTitle}
+        primary={home?.ctaPrimary}
+        secondary={home?.ctaSecondary}
+      />
     </>
   );
 }

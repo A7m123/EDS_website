@@ -15,6 +15,10 @@ const TYPE_TO_TAG: Record<string, string> = {
   clientLogo: "clientLogo",
   teamMember: "teamMember",
   siteSettings: "siteSettings",
+  homePage: "homePage",
+  aboutPage: "aboutPage",
+  careersPage: "careersPage",
+  contactPage: "contactPage",
 };
 
 function isAuthorized(req: NextRequest): boolean {

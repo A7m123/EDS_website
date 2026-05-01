@@ -8,9 +8,48 @@ import { Button } from "@/components/ui/Button";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { HeroMedia } from "./HeroMedia";
 import { prefersReducedMotion } from "@/lib/motion/reduced-motion";
+import type { Cta } from "@/lib/sanity/types";
 
-export function Hero() {
+type Props = {
+  eyebrow?: string;
+  headline1?: string;
+  headline2?: string;
+  subhead?: string;
+  ctaPrimary?: Cta;
+  ctaSecondary?: Cta;
+};
+
+const defaults = {
+  eyebrow: "Engineering & Technology R&D",
+  headline1: "Hard problems,",
+  headline2: "engineered into reality.",
+  subhead:
+    "Energy Driven Solutions is a Dubai-based R&D house building electromechanical, marine, and software systems for defense, energy, and government clients across the region.",
+  ctaPrimary: { label: "Explore capabilities", href: "/capabilities" },
+  ctaSecondary: { label: "See our work", href: "/projects" },
+};
+
+export function Hero({
+  eyebrow,
+  headline1,
+  headline2,
+  subhead,
+  ctaPrimary,
+  ctaSecondary,
+}: Props) {
   const rootRef = useRef<HTMLDivElement | null>(null);
+  const e = eyebrow || defaults.eyebrow;
+  const h1 = headline1 || defaults.headline1;
+  const h2 = headline2 || defaults.headline2;
+  const sub = subhead || defaults.subhead;
+  const cta1 = {
+    label: ctaPrimary?.label || defaults.ctaPrimary.label,
+    href: ctaPrimary?.href || defaults.ctaPrimary.href,
+  };
+  const cta2 = {
+    label: ctaSecondary?.label || defaults.ctaSecondary.label,
+    href: ctaSecondary?.href || defaults.ctaSecondary.href,
+  };
 
   useEffect(() => {
     const root = rootRef.current;
@@ -49,19 +88,15 @@ export function Hero() {
       <Container className="relative">
         <div className="max-w-4xl">
           <span data-anim className="inline-block">
-            <Eyebrow>Engineering &amp; Technology R&amp;D</Eyebrow>
+            <Eyebrow>{e}</Eyebrow>
           </span>
 
-          <Heading
-            as={1}
-            size="xl"
-            className="mt-8 text-text"
-          >
+          <Heading as={1} size="xl" className="mt-8 text-text">
             <span data-anim className="block">
-              Hard problems,
+              {h1}
             </span>
             <span data-anim className="block text-text-muted">
-              engineered into reality.
+              {h2}
             </span>
           </Heading>
 
@@ -69,17 +104,15 @@ export function Hero() {
             data-anim
             className="mt-8 max-w-2xl text-pretty text-base text-text-muted md:text-lg"
           >
-            Energy Driven Solutions is a Dubai-based R&amp;D house building
-            electromechanical, marine, and software systems for defense, energy,
-            and government clients across the region.
+            {sub}
           </p>
 
           <div data-anim className="mt-10 flex flex-wrap items-center gap-3">
-            <Button href="/capabilities" size="lg" withArrow>
-              Explore capabilities
+            <Button href={cta1.href} size="lg" withArrow>
+              {cta1.label}
             </Button>
-            <Button href="/projects" size="lg" variant="secondary">
-              See our work
+            <Button href={cta2.href} size="lg" variant="secondary">
+              {cta2.label}
             </Button>
           </div>
         </div>

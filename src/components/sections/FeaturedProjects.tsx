@@ -8,19 +8,25 @@ import { Reveal } from "@/components/motion/Reveal";
 import { urlFor } from "@/lib/sanity/image";
 import type { Project } from "@/lib/sanity/types";
 
-type Props = { projects: Project[] };
+type Props = {
+  projects: Project[];
+  eyebrow?: string;
+  title?: string;
+};
 
-export function FeaturedProjects({ projects }: Props) {
+export function FeaturedProjects({ projects, eyebrow, title }: Props) {
   if (!projects || projects.length === 0) return null;
+  const e = eyebrow || "Selected Work";
+  const t = title || "Built in the field, for the field.";
 
   return (
     <Section tone="surface" size="md">
       <Container>
         <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
           <div className="max-w-2xl">
-            <Eyebrow>Selected Work</Eyebrow>
+            <Eyebrow>{e}</Eyebrow>
             <Heading as={2} size="lg" className="mt-6">
-              Built in the field, for the field.
+              {t}
             </Heading>
           </div>
           <Link

@@ -1,8 +1,12 @@
 import { groq } from "next-sanity";
 import { sanityClient, isSanityConfigured } from "./client";
 import type {
+  AboutPage,
   Capability,
+  CareersPage,
   ClientLogo,
+  ContactPage,
+  HomePage,
   Project,
   SiteSettings,
   TeamMember,
@@ -77,6 +81,11 @@ export const siteSettingsQuery = groq`
     nav, footerLinks, contactEmail, contactPhone, address, social
   }
 `;
+
+export const homePageQuery = groq`*[_type == "homePage"][0]`;
+export const aboutPageQuery = groq`*[_type == "aboutPage"][0]`;
+export const careersPageQuery = groq`*[_type == "careersPage"][0]`;
+export const contactPageQuery = groq`*[_type == "contactPage"][0]`;
 
 type FetchOpts = { revalidate?: number; tags?: string[] };
 
@@ -164,5 +173,29 @@ export async function getSiteSettings(): Promise<SiteSettings | null> {
     siteSettingsQuery,
     {},
     { tags: ["siteSettings"] },
+  );
+}
+
+export async function getHomePage(): Promise<HomePage | null> {
+  return fetchOrEmpty<HomePage>(homePageQuery, {}, { tags: ["homePage"] });
+}
+
+export async function getAboutPage(): Promise<AboutPage | null> {
+  return fetchOrEmpty<AboutPage>(aboutPageQuery, {}, { tags: ["aboutPage"] });
+}
+
+export async function getCareersPage(): Promise<CareersPage | null> {
+  return fetchOrEmpty<CareersPage>(
+    careersPageQuery,
+    {},
+    { tags: ["careersPage"] },
+  );
+}
+
+export async function getContactPage(): Promise<ContactPage | null> {
+  return fetchOrEmpty<ContactPage>(
+    contactPageQuery,
+    {},
+    { tags: ["contactPage"] },
   );
 }

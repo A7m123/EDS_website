@@ -4,7 +4,8 @@ import { Section } from "@/components/ui/Section";
 import { Heading } from "@/components/ui/Heading";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Reveal } from "@/components/motion/Reveal";
-import { getTeamMembers } from "@/lib/sanity/queries";
+import { PortableBody } from "@/components/PortableBody";
+import { getAboutPage, getTeamMembers } from "@/lib/sanity/queries";
 import { urlFor } from "@/lib/sanity/image";
 import { pageMetadata } from "@/lib/seo/metadata";
 
@@ -17,22 +18,34 @@ export const metadata = pageMetadata({
   path: "/about",
 });
 
+const fallback = {
+  heroEyebrow: "About",
+  heroHeadline: "A small engineering team with a wide remit.",
+  heroIntro:
+    "Energy Driven Solutions (EDS) is an engineering and technology R&D company based in Dubai. We design, build, and field-test electromechanical, marine, and software systems for defense, energy, and government clients across the region.",
+  whereEyebrow: "Where we work",
+  whereTitle: "Built in Dubai. Deployed across the region.",
+  whereBodyText: [
+    "Our workshop and office are in Dubai, United Arab Emirates. We ship hardware and embed engineers with customers across the GCC, East Africa, and South Asia.",
+    "Field-testing is part of our rhythm. Most of what we deliver is expected to operate in dust, heat, salt, and intermittent connectivity — we design for that from day one.",
+  ],
+  leadershipEyebrow: "Leadership",
+  leadershipTitle: "The people running it.",
+};
+
 export default async function AboutPage() {
-  const team = await getTeamMembers();
+  const [about, team] = await Promise.all([getAboutPage(), getTeamMembers()]);
 
   return (
     <>
       <Section tone="default" size="sm" className="pt-32">
         <Container>
-          <Eyebrow>About</Eyebrow>
+          <Eyebrow>{about?.heroEyebrow || fallback.heroEyebrow}</Eyebrow>
           <Heading as={1} size="xl" className="mt-6 max-w-4xl">
-            A small engineering team with a wide remit.
+            {about?.heroHeadline || fallback.heroHeadline}
           </Heading>
           <p className="mt-6 max-w-prose text-text-muted">
-            Energy Driven Solutions (EDS) is an engineering and technology R&amp;D
-            company based in Dubai. We design, build, and field-test
-            electromechanical, marine, and software systems for defense, energy,
-            and government clients across the region.
+            {about?.heroIntro || fallback.heroIntro}
           </p>
         </Container>
       </Section>
@@ -40,32 +53,33 @@ export default async function AboutPage() {
       <Section tone="surface" size="md" bordered>
         <Container className="grid gap-16 md:grid-cols-2">
           <div>
-            <Eyebrow>Where we work</Eyebrow>
+            <Eyebrow>{about?.whereEyebrow || fallback.whereEyebrow}</Eyebrow>
             <Heading as={2} size="md" className="mt-6">
-              Built in Dubai. Deployed across the region.
+              {about?.whereTitle || fallback.whereTitle}
             </Heading>
           </div>
-          <div className="space-y-4 text-text-muted">
-            <p>
-              Our workshop and office are in Dubai, United Arab Emirates. We
-              ship hardware and embed engineers with customers across the GCC,
-              East Africa, and South Asia.
-            </p>
-            <p>
-              Field-testing is part of our rhythm. Most of what we deliver is
-              expected to operate in dust, heat, salt, and intermittent
-              connectivity — we design for that from day one.
-            </p>
-          </div>
+          {about?.whereBody && about.whereBody.length > 0 ? (
+            <div className="space-y-4 text-text-muted">
+              <PortableBody value={about.whereBody} />
+            </div>
+          ) : (
+            <div className="space-y-4 text-text-muted">
+              {fallback.whereBodyText.map((p) => (
+                <p key={p.slice(0, 32)}>{p}</p>
+              ))}
+            </div>
+          )}
         </Container>
       </Section>
 
       {team.length > 0 ? (
         <Section tone="default" size="md">
           <Container>
-            <Eyebrow>Leadership</Eyebrow>
+            <Eyebrow>
+              {about?.leadershipEyebrow || fallback.leadershipEyebrow}
+            </Eyebrow>
             <Heading as={2} size="lg" className="mt-6">
-              The people running it.
+              {about?.leadershipTitle || fallback.leadershipTitle}
             </Heading>
 
             <Reveal

@@ -55,6 +55,8 @@ export type TeamMember = {
 };
 
 export type SiteSettings = {
+  logo?: SanityImage;
+  logoMark?: SanityImage;
   nav?: { label: string; href: string }[];
   footerLinks?: { label: string; href: string }[];
   contactEmail?: string;

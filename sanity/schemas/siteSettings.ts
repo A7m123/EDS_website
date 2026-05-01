@@ -15,6 +15,21 @@ export default defineType({
   // Singleton — only one instance.
   fields: [
     defineField({
+      name: "logo",
+      title: "Logo (header & footer)",
+      description: "SVG strongly preferred. Should look good on dark.",
+      type: "image",
+      options: { accept: "image/svg+xml,image/png,image/webp" },
+    }),
+    defineField({
+      name: "logoMark",
+      title: "Logo mark (square)",
+      description:
+        "Optional square version for tight spaces (favicon area, OG). Falls back to main logo.",
+      type: "image",
+      options: { accept: "image/svg+xml,image/png,image/webp" },
+    }),
+    defineField({
       name: "nav",
       title: "Primary Nav",
       type: "array",

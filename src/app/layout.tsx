@@ -8,6 +8,7 @@ import { Nav } from "@/components/sections/Nav";
 import { Footer } from "@/components/sections/Footer";
 import { siteUrl, defaultMetadata } from "@/lib/seo/metadata";
 import { OrganizationJsonLd } from "@/lib/seo/jsonld";
+import { getSiteSettings } from "@/lib/sanity/queries";
 
 const display = localFont({
   src: "./fonts/GeistVF.woff",
@@ -33,18 +34,19 @@ export const metadata: Metadata = {
   ...defaultMetadata,
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  const settings = await getSiteSettings();
   return (
     <html lang="en" className={`${display.variable} ${body.variable} ${mono.variable}`}>
       <body className="min-h-screen bg-bg text-text antialiased">
         <SkipLink />
-        <Nav />
+        <Nav logo={settings?.logo} links={settings?.nav} />
         <main id="main" className="relative">
           {children}
         </main>
-        <Footer />
+        <Footer logo={settings?.logo} address={settings?.address} />
         <OrganizationJsonLd />
         <VisualEditing />
       </body>

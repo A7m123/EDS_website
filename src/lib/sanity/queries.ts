@@ -78,7 +78,7 @@ export const teamMembersQuery = groq`
 
 export const siteSettingsQuery = groq`
   *[_type == "siteSettings"][0]{
-    nav, footerLinks, contactEmail, contactPhone, address, social
+    logo, logoMark, nav, footerLinks, contactEmail, contactPhone, address, social
   }
 `;
 

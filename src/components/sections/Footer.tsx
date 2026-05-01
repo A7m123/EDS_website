@@ -1,5 +1,8 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
+import { urlFor } from "@/lib/sanity/image";
+import type { SanityImage } from "@/lib/sanity/types";
 
 const columns = [
   {
@@ -20,18 +23,37 @@ const columns = [
   },
 ];
 
-export function Footer() {
+type Props = {
+  logo?: SanityImage;
+  address?: string;
+};
+
+export function Footer({ logo, address }: Props) {
   const year = new Date().getFullYear();
+  const logoSrc = logo ? urlFor(logo).height(96).fit("max").url() : null;
+
   return (
     <footer className="border-t border-border bg-bg">
       <Container className="grid gap-12 py-16 md:grid-cols-[1.4fr_1fr_1fr] md:py-20">
         <div>
           <Link
             href="/"
-            className="font-display text-2xl tracking-tight"
+            className="inline-flex items-center"
             aria-label="Energy Driven Systems"
           >
-            Energy Driven Systems
+            {logoSrc ? (
+              <Image
+                src={logoSrc}
+                alt="Energy Driven Systems"
+                width={200}
+                height={48}
+                className="h-10 w-auto md:h-12"
+              />
+            ) : (
+              <span className="font-display text-2xl tracking-tight">
+                Energy Driven Systems
+              </span>
+            )}
           </Link>
           <p className="mt-4 max-w-prose text-sm text-text-muted">
             Engineering and technology R&amp;D for defense, energy, marine, and
@@ -61,7 +83,9 @@ export function Footer() {
       <div className="border-t border-border">
         <Container className="flex flex-col items-start gap-2 py-6 text-xs text-text-muted md:flex-row md:items-center md:justify-between">
           <p>© {year} Energy Driven Systems. All rights reserved.</p>
-          <p className="font-mono">Dubai, United Arab Emirates</p>
+          <p className="font-mono">
+            {address || "Dubai, United Arab Emirates"}
+          </p>
         </Container>
       </div>
     </footer>
